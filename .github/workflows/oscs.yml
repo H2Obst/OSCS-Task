@@ -8,7 +8,9 @@ jobs:
     env:
       buildDir: '${{github.workspace}}/build'
     steps:
+    - name: echo
+      run: echo "$buildDir"
     - name: mkdir
       run: mkdir build
     - name: build
-      run: cmake --build ${{buildDir}} -DCMAKE_BUILD_TYPE=Debug --target all
+      run: cmake --build build -DCMAKE_BUILD_TYPE=Debug --target all
