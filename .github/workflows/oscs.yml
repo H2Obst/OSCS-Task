@@ -8,11 +8,12 @@ jobs:
     env:
       buildDir: '${{github.workspace}}/build'
     steps:
+    - uses: actions/checkout@v2
     - name: echo
       run: echo "$buildDir"
-    - name: mkdir
-      run: mkdir -p $buildDir
-    - name: cd
-      run: cd $buildDir
+    - name: Create build directory
+      run: cmake -E make_directory $buildDir
+    - name: Configure CMake
+      run: cmake -S $GITHUB_WORKSPACE -B $buildDir -DCMAKE_BUILD_TYPE=Debug
     - name: build
-      run: cmake -DCMAKE_BUILD_TYPE=Debug --target all ..
+      run: cmake --build $buildDir --config Debug
