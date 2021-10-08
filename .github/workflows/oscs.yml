@@ -12,7 +12,7 @@ jobs:
       run: echo "$buildDir"
     - name: mkdir
       run: mkdir -p $buildDir
-    - name: version
-      run: cmake --version
+    - name: cd
+      run: cd $buildDir
     - name: build
-      run: cmake -DCMAKE_BUILD_TYPE=Debug --target all --build $buildDir
+      run: cmake -DCMAKE_BUILD_TYPE=Debug --target all ..
