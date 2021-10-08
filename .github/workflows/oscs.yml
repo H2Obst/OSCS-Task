@@ -6,9 +6,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      buildDir: '${{ github.workspace }}/build'
+      buildDir: '${{github.workspace}}/build'
     steps:
     - name: mkdir
       run: mkdir build
     - name: build
-      run: cmake --build $buildDir -DCMAKE_BUILD_TYPE=Debug --target all
+      run: cmake --build ${{buildDir}} -DCMAKE_BUILD_TYPE=Debug --target all
