@@ -1,0 +1,14 @@
+name: oscs
+on:
+  push:
+    branches: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      buildDir: '${{ github.workspace }}/build'
+    steps:
+    - name: mkdir
+      run: mkdir build
+    - name: build
+      run: cmake --build $buildDir -DCMAKE_BUILD_TYPE=Debug --target all
